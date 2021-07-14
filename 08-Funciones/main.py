@@ -92,12 +92,14 @@ def devuelveTodo(nombre, apellidos):
     texto = getNombre(nombre) + '\n' + getApellidos(apellidos)
     return texto
 
-print(getNombre('Aitor'), getApellidos('Poquet Ginestar'));
-print(devuelveTodo('Aitor', 'Poquet Ginestar'));
+
+print(getNombre('Aitor'), getApellidos('Poquet Ginestar'))
+print(devuelveTodo('Aitor', 'Poquet Ginestar'))
 
 # Función lambda => solo para tareas pequeñas. Se tiene que hacer en una sola línea
-dimeElYear = lambda year: f'El año es: {year}';
-
-print(dimeElYear(2222 * 2));
 
 
+def dimeElYear(year): return f'El año es: {year}'
+
+
+print(dimeElYear(2222 * 2))

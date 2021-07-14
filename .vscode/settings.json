@@ -1,3 +1,10 @@
 {
-    "python.formatting.provider": "autopep8"
+    "python.formatting.provider": "autopep8",
+    "python.analysis.extraPaths": [
+        "./16-POO_clases",
+        "./17-POO_herencia"
+    ],
+    "sqltools.connections": [],
+    "sqltools.useNodeRuntime": true,
+    
 }
