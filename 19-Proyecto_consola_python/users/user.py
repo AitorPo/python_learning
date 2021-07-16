@@ -1,14 +1,10 @@
-import mysql.connector as conn
+from datetime import datetime
+import hashlib
+import users.conn as connection
 
-db = conn.connect(
-    host = 'localhost',
-    port = 3306,
-    user = 'root',
-    passwd = '',
-    database = 'python_console'
-)
-
-cursor = db.cursor(buffered = True)
+conn = connection.doConnect()
+db = conn[0]
+cursor = conn[1]
 
 class User:
 
@@ -22,7 +18,34 @@ class User:
         return self.email + ' ' + self.name
 
     def register(self):
-        return self.name
+        curDate = datetime.now()
+        
+        # encrypt password
+        encrypt = hashlib.sha256()
+        encrypt.update(self.password.encode('utf8'))
+        
+        sql = 'INSERT INTO users VALUES (null, %s, %s, %s, %s, %s)'
+        user = (self.name, self.surname, self.email, encrypt.hexdigest(), curDate)
+
+        try:
+            cursor.execute(sql, user)
+            db.commit()
+            result = [cursor.rowcount, self]
+        except: 
+            result = [0, self]   
+        
+        return result
 
     def identify(self):
-        return self.password
+        sql = 'SELECT * FROM users WHERE email = %s and password = %s'
+
+        encrypt = hashlib.sha256()
+        encrypt.update(self.password.encode('utf8'))
+
+        user = (self.email, encrypt.hexdigest())
+
+        cursor.execute(sql, user)
+        result = cursor.fetchone()
+
+        return result
+
