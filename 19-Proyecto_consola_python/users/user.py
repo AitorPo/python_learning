@@ -1,5 +1,6 @@
 from datetime import datetime
 import hashlib
+# DB's connection file
 import users.conn as connection
 
 conn = connection.doConnect()

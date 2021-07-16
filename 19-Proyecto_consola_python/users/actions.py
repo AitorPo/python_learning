@@ -1,6 +1,7 @@
 import getpass
 import users.user as userModel
-
+# logic from class Note needed to be able to use note's methods in nextAction method
+import notes.actions as noteAction
 
 class Actions:
 
@@ -14,8 +15,6 @@ class Actions:
         user = userModel.User(name, surname, email, password)
         signIn = user.register()  # returns 1 if user have been registered or 0 if not
 
-        print(signIn[1].name + ' ' + signIn[1].password +
-              ' ' + signIn[1].email + ' ' + signIn[1].surname)
         if signIn[0] >= 1:
             print(f'\n{signIn[1].name} have been registered')
         else:
@@ -49,12 +48,13 @@ class Actions:
         """)
 
         action = input('What to do? ')
+        do = noteAction.Actions()
 
         if action == 'new':
-            print('new')
+            do.create(user)
             self.nextActions(user)
         elif action == 'show':
-            print('show')
+            do.show(user)
             self.nextActions(user)
         elif action == 'delete':
             print('delete')
