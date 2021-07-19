@@ -57,9 +57,10 @@ class Actions:
             do.show(user)
             self.nextActions(user)
         elif action == 'delete':
-            print('delete')
+            do.delete(user)
             self.nextActions(user)
         elif action == 'exit':
             exit()
         else:
             print('Type an existing option')
+

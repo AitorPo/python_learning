@@ -28,4 +28,16 @@ class Actions:
             print(f'|{note[3]}')
             print('**********************************************')
 
+    def delete(self, user):
+        title = input('Write the title of the note you want to delete: ')     
+        note = noteModel.Note(user[0], title)
+        delete = note.deleteNote()  
+        
+        if delete[0] >= 1:
+            print(f'Note with title: {note.title} has been successfully deleted!')
+        else:
+            print(f'Something went wrong. Could not delete the note')    
+
+
+
             

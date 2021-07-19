@@ -35,3 +35,11 @@ class Note:
         result = cursor.fetchall()
 
         return result
+
+    def deleteNote(self):
+        sql = 'DELETE FROM notes WHERE user_id = %s AND title = ''%s'''
+        data = (self.idUser, self.title)
+        cursor.execute(sql, data)
+        db.commit()
+
+        return [cursor.rowcount, self]
