@@ -6,5 +6,7 @@
     ],
     "sqltools.connections": [],
     "sqltools.useNodeRuntime": true,
-    
+    "python.defaultInterpreterPath": "python3",
+    "auto-close-tag.enableAutoCloseSelfClosingTag": true,
+    "auto-close-tag.activationOnLanguage": ["*"]
 }
